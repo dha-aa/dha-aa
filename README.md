@@ -1,29 +1,26 @@
-# Hi there, I'm Dhananjay! 👋
 
-Welcome to my GitHub profile! I'm a passionate developer and love to explore new technologies. Here's a little about me:
+# Dhananjay  
 
-## 🚀 About Me
+## About Me  
 
-- 💻 I enjoy coding and solving problems.
-- 🎓 I'm always learning and improving my skills.
-- 🌐 I love contributing to open source projects.
-- 🤝 I'm open to collaborate on interesting projects.
 
-## 🛠️ Technologies & Tools
+Passionate software developer with a strong focus on problem-solving, clean code, and continuous learning.  
+I enjoy working on innovative projects, contributing to open-source, and exploring new technologies.
+```
+## Techstack
 
-- Programming Languages: Python, JavaScript, Java
-- Web Development: HTML, CSS, React, Node.js
-- Databases: MySQL, MongoDB
-- Tools: Git, Docker, Kubernetes
+Languages:        Python, JavaScript, Rust  
+Web Development:  HTML, CSS, React, Node.js Nextjs
+Databases:        Postgres, MongoDB  
+DevOps & Tools:   Git, Docker, Kubernetes  
+```
 
-## 📈 GitHub Stats
+## Contact  
 
-![Dhananjay's GitHub stats](https://github-readme-stats.vercel.app/api?username=dha-aa&show_icons=true&theme=radical)
 
-## 📫 How to reach me
+Email:    dhannjaysingh2006@gmail.com  
 
-- Email: dhananjay@example.com
-- LinkedIn: [Dhananjay](https://www.linkedin.com/in/dhananjay)
-- Twitter: [@dhananjay](https://twitter.com/dhananjay)
+LinkedIn: https://www.linkedin.com/in/dhananjaydiwan
 
-Thanks for visiting my profile! Have a great day! 😄
+Twitter:  https://twitter.com/dhaannjay
+
