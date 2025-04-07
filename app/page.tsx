@@ -80,7 +80,7 @@ export default function Home() {
       <div className="w-full max-w-md space-y-6 p-6 border-[0.5px] border-neutral-800 rounded-lg">
         {/* Top section with navigation on right */}
         <div className="flex justify-between items-center">
-          <h1 className="text-xl font-medium">{about.author}</h1>
+          <h1 className="text-xl font-medium" onClick={() => {setActiveTab(null)}}>{about.author}</h1>
           
           {/* Right-aligned navigation */}
           <div className="flex space-x-4 text-sm">
@@ -113,13 +113,8 @@ export default function Home() {
         <div className="min-h-32">
           {renderContent()}
         </div>
-
         {/* Social Links */}
-        
         <Sociallinks/>
-
-
-
       </div>
     </div>
   );
