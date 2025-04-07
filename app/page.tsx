@@ -2,13 +2,14 @@
 
 import { useState } from "react";
 import { Separator } from "@/components/ui/separator";
-import { projects,contributions} from "../data/projects"
+import { projects,contributions,about} from "../data/projects"
 import {
   Github,
   BookOpen,
   Twitter,
   ExternalLink
 } from "lucide-react";
+import Sociallinks from "@/components/custom/socail-link";
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState<"projects" | "contribute" | null>(null);
@@ -64,10 +65,10 @@ export default function Home() {
         <div className="space-y-4">
           <h2 className="text-green-400 font-medium text-lg">About</h2>
           <p className="text-sm text-neutral-300">
-            Hi, I'm a developer specializing in AI and web applications. I build intuitive tools that solve real problems.
+          {about.bio}
           </p>
           <p className="text-sm text-neutral-300">
-            Currently focused on machine learning integration with modern web frameworks.
+           {about.workingon}
           </p>
         </div>
       );
@@ -79,7 +80,7 @@ export default function Home() {
       <div className="w-full max-w-md space-y-6 p-6 border-[0.5px] border-neutral-800 rounded-lg">
         {/* Top section with navigation on right */}
         <div className="flex justify-between items-center">
-          <h1 className="text-xl font-medium">Dhananjay</h1>
+          <h1 className="text-xl font-medium">{about.author}</h1>
           
           {/* Right-aligned navigation */}
           <div className="flex space-x-4 text-sm">
@@ -114,20 +115,11 @@ export default function Home() {
         </div>
 
         {/* Social Links */}
-        <Separator className="my-4 bg-neutral-800" />
+        
+        <Sociallinks/>
 
 
-        <div className="flex items-center">
-          <a href="https://github.com/dha-aa" target="_blank" className="p-2 text-neutral-500 hover:text-blue-400 transition-colors" aria-label="GitHub">
-            <Github size={18} />
-          </a>
-          <a href="#" target="_blank" className="p-2 text-neutral-500 hover:text-blue-400 transition-colors" aria-label="Blog">
-            <BookOpen size={18} />
-          </a>
-          <a href="https://x.com/dhaannjay" target="_blank" className="p-2 text-neutral-500 hover:text-blue-400 transition-colors" aria-label="Twitter/X">
-            <Twitter size={18} />
-          </a>
-        </div>
+
       </div>
     </div>
   );
