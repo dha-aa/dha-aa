@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Separator } from "@/components/ui/separator";
+import { projects,contributions} from "../data/projects"
 import {
   Github,
   BookOpen,
@@ -11,15 +12,6 @@ import {
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState<"projects" | "contribute" | null>(null);
-
-  const projects = [
-    { name: "git-single", tech: "you can fetch specefic dir for git repo", link: "https://github.com/dha-aa/git-single.git" },
-  ];
-
-  const contributions = [
-    { name: "OpenAI Prompt Collection", org: "OpenAI Community", link: "#" },
-    { name: "Next.js Boilerplate", org: "Vercel", link: "#" },
-  ];
 
   // Function to render content based on active tab
   const renderContent = () => {
