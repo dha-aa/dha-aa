@@ -4,7 +4,7 @@ export const projects = [
   ];
   
 export const contributions = [
-  { name: "OpenAI Prompt Collection", org: "OpenAI Community", link: "#" },
+  { name: "Browser-use", org: "browser-use", link: "https://github.com/browser-use/browser-use/pull/1302" },
   { name: "Next.js Boilerplate", org: "Vercel", link: "#" },
 ];
 
