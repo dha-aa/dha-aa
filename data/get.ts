@@ -1,6 +1,6 @@
 export async function fetchPortfolioData() {
     try {
-      const res = await fetch("https://dha-aa.vercel.app/api/portfolio");
+      const res = await fetch("api/portfolio");
       
       if (!res.ok) {
         throw new Error(`Failed to fetch data: ${res.status}`);
