@@ -6,6 +6,7 @@ import {
   Twitter,
   Briefcase,
   GitPullRequest,
+  Award,
 } from "lucide-react";
 import { fetchPortfolioData } from "@/data/get";
 import { motion } from "framer-motion";
@@ -30,12 +31,20 @@ type PortfolioData = {
     org: string;
     link: string;
   }[];
+  hackathons: {
+    name: string;
+    link: string;
+    prize: string;
+  }[];
 };
 
 export default function PortfolioUI() {
   const [data, setData] = useState<PortfolioData | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+
+  
+  
 
   useEffect(() => {
     const loadData = async () => {
@@ -160,7 +169,31 @@ export default function PortfolioUI() {
             ))}
           </div>
         </section>
+         {/* Hackathons & Bounties Section */}
+         <section>
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4 flex items-center">
+            <Award className="mr-2" /> Hackathons & Bounties
+          </h2>
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+            {data.hackathons.map((hackathon, index) => (
+              <motion.div
+                key={index}
+                className="bg-white border rounded-xl p-4 shadow-sm hover:shadow-md transition"
+                whileHover={{ scale: 1.05 }}
+              >
+                <div className="flex justify-between items-start">
+                  <h3 className="font-semibold text-gray-800">{hackathon.name}</h3>
+                  <a href={hackathon.link} target="_blank" rel="noopener noreferrer">
+                    <ExternalLink className="w-4 h-4 text-blue-600" />
+                  </a>
+                </div>
+                <p className="text-sm text-gray-600 mt-2">{hackathon.prize}</p>
+              </motion.div>
+            ))}
+          </div>
+        </section>
 
+       
         {/* Footer */}
         <footer className="text-center text-sm text-gray-500 mt-12">
           © {new Date().getFullYear()} {data.about.author}
