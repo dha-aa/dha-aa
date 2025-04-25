@@ -6,15 +6,36 @@ import {
   Twitter,
   Briefcase,
   GitPullRequest,
-  User,
 } from "lucide-react";
 import { fetchPortfolioData } from "@/data/get";
 import { motion } from "framer-motion";
 
+// Define types for the fetched portfolio data
+type PortfolioData = {
+  about: {
+    author: string;
+    bio: string;
+    workingon: string;
+    githublink?: string;
+    xlink?: string;
+    docks?: string;
+  };
+  projects: {
+    name: string;
+    link: string;
+    tech: string;
+  }[];
+  contributions: {
+    name: string;
+    org: string;
+    link: string;
+  }[];
+};
+
 export default function PortfolioUI() {
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [data, setData] = useState<PortfolioData | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const loadData = async () => {
@@ -22,8 +43,9 @@ export default function PortfolioUI() {
         const portfolioData = await fetchPortfolioData();
         if (portfolioData.error) setError(portfolioData.error);
         else setData(portfolioData);
-      } catch {
-        setError("Failed to load portfolio data");
+      } catch (err) {
+        console.error(err);
+        setError("An unexpected error occurred.");
       } finally {
         setLoading(false);
       }
@@ -58,8 +80,7 @@ export default function PortfolioUI() {
   return (
     <main className="px-4 py-8">
       <div className="max-w-5xl mx-auto space-y-12">
-
-        {/* About */}
+        {/* About Section */}
         <section className="bg-white p-6 rounded-xl shadow-sm border">
           <div className="flex flex-col md:flex-row justify-between gap-4">
             <div>
@@ -72,66 +93,75 @@ export default function PortfolioUI() {
             </div>
             <div className="flex items-center space-x-4">
               {data.about.githublink && (
-                <a href={data.about.githublink} target="_blank"><Github /></a>
+                <a href={data.about.githublink} target="_blank" rel="noopener noreferrer">
+                  <Github />
+                </a>
               )}
               {data.about.xlink && (
-                <a href={data.about.xlink} target="_blank"><Twitter /></a>
+                <a href={data.about.xlink} target="_blank" rel="noopener noreferrer">
+                  <Twitter />
+                </a>
               )}
               {data.about.docks && data.about.docks !== "#" && (
-                <a href={data.about.docks} target="_blank"><ExternalLink /></a>
+                <a href={data.about.docks} target="_blank" rel="noopener noreferrer">
+                  <ExternalLink />
+                </a>
               )}
             </div>
           </div>
         </section>
 
-        {/* Projects */}
+        {/* Projects Section */}
         <section>
           <h2 className="text-2xl font-semibold text-gray-900 mb-4 flex items-center">
             <Github className="mr-2" /> Projects
           </h2>
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
             {data.projects.map((project, index) => (
-              <div
+              <motion.div
                 key={index}
                 className="bg-white border rounded-xl p-4 shadow-sm hover:shadow-md transition"
+                whileHover={{ scale: 1.05 }}
               >
                 <div className="flex justify-between items-start">
                   <h3 className="font-semibold text-gray-800">{project.name}</h3>
-                  <a href={project.link} target="_blank">
+                  <a href={project.link} target="_blank" rel="noopener noreferrer">
                     <Github className="w-4 h-4 text-blue-600" />
                   </a>
                 </div>
                 <p className="text-sm text-gray-600 mt-2">{project.tech}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </section>
 
-        {/* Contributions */}
+        {/* Contributions Section */}
         <section>
           <h2 className="text-2xl font-semibold text-gray-900 mb-4 flex items-center">
             <GitPullRequest className="mr-2" /> Contributions
           </h2>
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
-            {data.contributions.map((c, index) => (
-              <div
+            {data.contributions.map((contribution, index) => (
+              <motion.div
                 key={index}
                 className="bg-white border rounded-xl p-4 shadow-sm hover:shadow-md transition"
+                whileHover={{ scale: 1.05 }}
               >
                 <div className="flex justify-between items-start">
                   <div>
-                    <h3 className="text-gray-800 font-semibold">{c.name}</h3>
-                    <p className="text-blue-600 text-sm">{c.org}</p>
+                    <h3 className="text-gray-800 font-semibold">{contribution.name}</h3>
+                    <p className="text-blue-600 text-sm">{contribution.org}</p>
                   </div>
-                  <a href={c.link} target="_blank">
+                  <a href={contribution.link} target="_blank" rel="noopener noreferrer">
                     <ExternalLink className="w-4 h-4 text-blue-600" />
                   </a>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </section>
 
+        {/* Footer */}
         <footer className="text-center text-sm text-gray-500 mt-12">
           © {new Date().getFullYear()} {data.about.author}
         </footer>
