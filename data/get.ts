@@ -1,6 +1,6 @@
 export async function fetchPortfolioData() {
     try {
-      const res = await fetch("http://localhost:3000/api/portfolio");
+      const res = await fetch(`${process.env.BASE_URL}/api/portfolio`);
       
       if (!res.ok) {
         throw new Error(`Failed to fetch data: ${res.status}`);
