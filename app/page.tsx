@@ -40,8 +40,11 @@ export default function PortfolioUI() {
     const loadData = async () => {
       try {
         const portfolioData = await fetchPortfolioData();
-        if (portfolioData.error) setError(portfolioData.error);
-        else setData(portfolioData);
+        if (Array.isArray(portfolioData) && portfolioData.length > 0) {
+          setData(portfolioData[0]); // ✅ Fix: use first item
+        } else {
+          setError("No data found.");
+        }
       } catch (err) {
         console.error(err);
         setError("An unexpected error occurred.");
