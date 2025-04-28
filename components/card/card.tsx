@@ -22,8 +22,11 @@ export default function Card({ title, icon: Icon, innercard }: CardProps) {
               className="bg-white border rounded-xl p-4 shadow-sm hover:shadow-md transition"
               whileHover={{ scale: 1.05 }}
             >
-              <div className="flex justify-between items-start">
-                <h3 className="font-semibold text-gray-800">{innercard.name}</h3>
+              <div className="flex justify-between items-center align-middle">
+                <div className="flex gap-3 rounded-lg justify-between">
+                  <img src={innercard.icon}
+                   className="w-5 h-5 rounded-lg object-cover" />
+                <h3 className="font-semibold text-gray-800">{innercard.name}</h3></div>
                 <a href={innercard.link} target="_blank" rel="noopener noreferrer">
                    <ExternalLink className="w-4 h-4 text-blue-600" />
                 </a>

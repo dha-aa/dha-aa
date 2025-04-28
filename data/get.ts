@@ -13,6 +13,7 @@ export async function fetchData() {
           "title": "Projects",
           "innercard": [
             {
+              "icon":"https://avatars.githubusercontent.com/u/172045152?s=400&u=2cac73fc572b067232fd4b003231c939496e27f3&v=4",
               "name": "git-single",
               "discripation": "you can fetch specefic dir for git repo",
               "link": "https://github.com/dha-aa/git-single.git"
@@ -23,11 +24,13 @@ export async function fetchData() {
           "title": "Contributions",
           "innercard": [
             {
+              "icon":"https://avatars.githubusercontent.com/u/192012301?s=200&v=4",
               "name": "Browser-use",
               "discripation": "browser-use",
               "link": "https://github.com/browser-use/browser-use/pull/1302"
             },
             {
+              "icon":"https://avatars.githubusercontent.com/u/14985020?s=48&v=4",
               "name": "Next.js ai",
               "discripation": "Vercel",
               "link": "https://github.com/vercel/ai/pull/5932"
@@ -38,6 +41,7 @@ export async function fetchData() {
           "title": "Hackathons & Bounties",
           "innercard": [
             {
+              "icon": "https://avatars.githubusercontent.com/u/85804044?s=200&v=4",
               "name": "Nosana Builders Challenge",
               "link": "https://earn.superteam.fun/listing/nosana-builders-challenge/winner/",
               "discripation": "9st Place - $100"
