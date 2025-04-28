@@ -1,4 +1,5 @@
 export interface InnerCard {
+    icon: string;
     name: string;
     link: string;
     discripation: string;
