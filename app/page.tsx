@@ -8,38 +8,20 @@ import {
   Code2,
   Brain,
 } from "lucide-react";
-import { fetchPortfolioData } from "@/data/get";
+import { fetchData } from "@/data/get";
 import Card from "@/components/card/card";
 import { AuthorCard } from "@/components/card/aboutcard";
-
-// Types
-type PortfolioItem = {
-  title: string;
-  icon?: string;
-  innercard: any[];
-};
-
-type PortfolioData = {
-  about: {
-    author: string;
-    bio: string;
-    workingon: string;
-    githublink?: string;
-    xlink?: string;
-    docks?: string;
-  };
-  data: PortfolioItem[];
-};
+import  { Data } from "../lib/types"
 
 export default function PortfolioUI() {
-  const [data, setData] = useState<PortfolioData | null>(null);
+  const [data, setData] = useState<Data | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const loadData = async () => {
       try {
-        const portfolioData = await fetchPortfolioData();
+        const portfolioData = await fetchData();
         if (Array.isArray(portfolioData) && portfolioData.length > 0) {
           setData(portfolioData[0]); // ✅ Fix: use first item
         } else {

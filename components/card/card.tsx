@@ -7,21 +7,10 @@ import {
     Award,
   } from "lucide-react";
   import { motion } from "framer-motion";
+ import { CardProps } from "@/lib/types";
   
-  interface InnerCard{
-    name: string;
-    link: string;
-    discripation: string;
-  }
-  
-  interface CardProps {
-    title: string;
-    icon: React.ElementType;
-    innercard: InnerCard[];
-  }
-  
-  export default function Card({ title, icon: Icon, innercard }: CardProps) {
-    return (
+export default function Card({ title, icon: Icon, innercard }: CardProps) {
+  return (
       <div>
         <h2 className="text-2xl font-semibold text-gray-900 mb-4 flex items-center">
           <Icon className="mr-2" /> {title}
