@@ -1,17 +1,6 @@
 import { Briefcase, Github, Twitter, ExternalLink } from "lucide-react";
+import { AuthorCardProps } from "@/lib/types";
 
-interface AboutData {
-  author: string;
-  bio: string;
-  workingon: string;
-  githublink?: string;
-  xlink?: string;
-  docks?: string;
-}
-
-interface AuthorCardProps {
-  about: AboutData;
-}
 
 export function AuthorCard({ about }: AuthorCardProps) {
   return (

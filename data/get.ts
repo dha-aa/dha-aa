@@ -1,4 +1,4 @@
-export async function fetchPortfolioData() {
+export async function fetchData() {
     const data =[{
       "about": {
         "author": "Dhananjay Diwan",
