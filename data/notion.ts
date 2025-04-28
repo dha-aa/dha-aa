@@ -9,14 +9,14 @@ const databaseIdProjects = process.env.NOTION_DATABASE_ID
 const databaseIdProfile = process.env.NOTION_DATABASE_ID_O
 
 async function fetchAndFormatEntries() {
-  let results = []
+  let results:any = []
   let hasMore = true
   let startCursor = undefined
 
   while (hasMore) {
     const response = await notion.databases.query({
-      database_id: databaseIdProjects,
-      start_cursor: startCursor,
+      database_id: databaseIdProjects!,
+      start_cursor: startCursor!,
     })
 
     results = results.concat(response.results)
@@ -24,9 +24,9 @@ async function fetchAndFormatEntries() {
     startCursor = response.next_cursor
   }
 
-  const groupedData = {}
+  const groupedData:any = {}
 
-  results.forEach((page) => {
+  results.forEach((page:any) => {
     const properties = page.properties
     const category = properties.Catogary?.select?.name || 'Uncategorized'
     const name = properties.title?.title[0]?.plain_text || 'No Name'
@@ -55,14 +55,16 @@ async function fetchAndFormatEntries() {
 }
 
 async function fetchProfile() {
-  let results = []
+  let results:any = []
   let hasMore = true
   let startCursor = undefined
+  
 
   while (hasMore) {
+    
     const response = await notion.databases.query({
-      database_id: databaseIdProfile,
-      start_cursor: startCursor,
+      database_id: databaseIdProfile!,
+      start_cursor: startCursor!,
     })
 
     results = results.concat(response.results)
