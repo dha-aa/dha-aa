@@ -8,6 +8,9 @@ import {
   } from "lucide-react";
   import { motion } from "framer-motion";
  import { CardProps } from "@/lib/types";
+
+
+ 
   
 export default function Card({ title, icon: Icon, innercard }: CardProps) {
   return (

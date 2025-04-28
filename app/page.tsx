@@ -8,10 +8,10 @@ import {
   Code2,
   Brain,
 } from "lucide-react";
-import { fetchData } from "@/data/get";
 import Card from "@/components/card/card";
 import { AuthorCard } from "@/components/card/aboutcard";
 import  { Data } from "../lib/types"
+import { buildFinalData } from "@/data/notion";
 
 export default function PortfolioUI() {
   const [data, setData] = useState<Data | null>(null);
@@ -21,7 +21,7 @@ export default function PortfolioUI() {
   useEffect(() => {
     const loadData = async () => {
       try {
-        const portfolioData = await fetchData();
+        const portfolioData = await fetch("api/notion");
         if (Array.isArray(portfolioData) && portfolioData.length > 0) {
           setData(portfolioData[0]); // ✅ Fix: use first item
         } else {
