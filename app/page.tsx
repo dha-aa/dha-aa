@@ -1,17 +1,10 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import {
-  Github,
-  GitPullRequest,
-  Award,
-  Code2,
-  Brain,
-} from "lucide-react";
+import { Github, GitPullRequest, Award, Code2, Brain } from "lucide-react";
 import Card from "@/components/card/card";
 import { AuthorCard } from "@/components/card/aboutcard";
-import  { Data } from "../lib/types"
-import { buildFinalData } from "@/data/notion";
+import { Data } from "../lib/types";
 
 export default function PortfolioUI() {
   const [data, setData] = useState<Data | null>(null);
@@ -21,12 +14,13 @@ export default function PortfolioUI() {
   useEffect(() => {
     const loadData = async () => {
       try {
-        const portfolioData = await fetch("api/notion");
-        if (Array.isArray(portfolioData) && portfolioData.length > 0) {
-          setData(portfolioData[0]); // ✅ Fix: use first item
-        } else {
-          setError("No data found.");
+        const res = await fetch("/api/notion");
+        if (!res.ok) {
+          throw new Error("Failed to fetch");
         }
+        const portfolioArray: Data[] = await res.json();
+        const portfolioData = portfolioArray[0]; // Take the first object
+        setData(portfolioData);
       } catch (err) {
         console.error(err);
         setError("An unexpected error occurred.");
@@ -37,7 +31,7 @@ export default function PortfolioUI() {
     loadData();
   }, []);
 
-  if (loading || !data) {
+  if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-white">
         <p className="text-gray-500 text-lg">Loading...</p>
@@ -61,7 +55,14 @@ export default function PortfolioUI() {
     );
   }
 
-  // Icon list for each section
+  if (!data) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-white">
+        <p className="text-gray-500 text-lg">No data available.</p>
+      </div>
+    );
+  }
+
   const icons = [Github, GitPullRequest, Award, Code2, Brain];
 
   return (
